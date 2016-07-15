@@ -1,0 +1,97 @@
+/*
+Reuse the asterisk diamond program and create a function diamond (........) that takes two values, 
+an integer for the side of the diamond and a char value for the 
+character printed and outputs the corresponding diamond shape. The function has default values,
+5 for the side and * for the character. 
+The user can choose to use the default values or specify new values.
+*/
+
+/*
+
+Output Sample 1
+Do you want to use the default values? (Y/N): y
+    *
+   ***
+  *****
+ *******
+*********
+ *******
+  *****
+   ***
+    *
+    
+Output Sample 2
+Do you want to use the default values? (Y/N): n 
+Enter an integer for the side of the diamond: 3 
+Enter a char value for the character printed: @
+  @
+ @@@
+@@@@@
+ @@@
+  @
+
+*/
+
+
+//Soludtions 
+
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void inputValue (int sideInput = 5, char characterInput = '*'){
+    
+    // first half of the diamond
+    for (int i = 1; i < 9; i+=2){
+        
+        for(int j = 8; j >= i; j -=2)
+            cout << ' ';
+        for (int k = 1; k <= i; k++)
+            cout << characterInput;
+        cout << endl;
+        
+    }
+    
+    //second half of the diamond
+    for (int i = 9; i >= 1; i-=2){
+        for (int j = i; j <= 8; j+=2)
+            cout << ' ';
+        for (int k = i; k >= 1; k--)
+            cout << characterInput;
+        cout << endl;
+        
+    }
+    
+    
+}
+
+int main() {
+    
+    char input;
+    
+    cout << "Do you want to use the default values? (Y/N):";
+    cin >> input;
+    
+    if (input == 'y' || input == 'Y') {
+        inputValue();
+    }
+    else if (input != 'y' || input != 'Y'){
+        
+        int side;
+        char character;
+        
+            cout << "Enter an integer for the side of the diamond:";
+            cin >> side;
+        
+            cout << "Enter a char value for the character printed:";
+            cin >> character;
+        
+        inputValue(side,character);
+    }
+    
+    return 0;
+}
+
+
