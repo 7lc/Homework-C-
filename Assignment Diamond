@@ -34,6 +34,11 @@ Enter a char value for the character printed: @
 
 
 //Soludtions 
+///////////////////////////
+///////////////////////////
+///////////////////////////
+///////////////////////////
+
 
 
 #include <iostream>
@@ -41,25 +46,26 @@ Enter a char value for the character printed: @
 
 using namespace std;
 
-void inputValue (int sideInput = 5, char characterInput = '*'){
+//Declare an input function with side and character
+void inputValue (int side = 5, char character = '*'){
     
-    // first half of the diamond
-    for (int i = 1; i < 9; i+=2){
+    //Draw first half of the diamond
+    for (int i = 1; i <= side * 2 ; i+=2){
         
-        for(int j = 8; j >= i; j -=2)
+        for(int j = side * 2; j >= i; j-=2 )
             cout << ' ';
         for (int k = 1; k <= i; k++)
-            cout << characterInput;
+            cout << character;
         cout << endl;
         
     }
     
-    //second half of the diamond
-    for (int i = 9; i >= 1; i-=2){
-        for (int j = i; j <= 8; j+=2)
+    //Draw second half of the diamond
+    for (int i = side * 2 - 3; i >= 1; i-=2){
+        for (int j = i; j <= side * 2; j+=2)
             cout << ' ';
         for (int k = i; k >= 1; k--)
-            cout << characterInput;
+            cout << character;
         cout << endl;
         
     }
@@ -69,29 +75,34 @@ void inputValue (int sideInput = 5, char characterInput = '*'){
 
 int main() {
     
+    //Declare a character type input
     char input;
-    
     cout << "Do you want to use the default values? (Y/N):";
     cin >> input;
+    
+    //Check the input statement
     
     if (input == 'y' || input == 'Y') {
         inputValue();
     }
     else if (input != 'y' || input != 'Y'){
         
-        int side;
-        char character;
+        /* If an user does not select the default value,
+        then use customized input values to call function
+        */
+        
+        int sideInput;
+        char characterInput;
         
             cout << "Enter an integer for the side of the diamond:";
-            cin >> side;
+            cin >> sideInput;
         
             cout << "Enter a char value for the character printed:";
-            cin >> character;
+            cin >> characterInput;
         
-        inputValue(side,character);
+        inputValue(sideInput,characterInput);
     }
     
     return 0;
 }
-
 
